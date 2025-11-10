@@ -1,35 +1,34 @@
-# World Bank API Explorer
+# World Bank Data Explorer
 
 An interactive Angular data visualization application that displays live economic indicators from the World Bank API on a clickable world map.
 
-[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://your-app-url.netlify.app)
+[![Live Demo](https://img.shields.io/badge/demo-live-success)](https://worldbank-data-explorer.netlify.app/)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/01467d71-4454-48fe-b2e5-8ec2f26d79a9/deploy-status)](https://app.netlify.com/projects/worldbank-data-explorer/deploys)
 
 ## Live Demo
 
-**[View Live Application](https://your-app-url.netlify.app)**
+**[View Live Application](https://worldbank-data-explorer.netlify.app/)**
 
 ## Features
 
 - **Interactive World Map** - Click on any country to view detailed economic data
 - **Real-Time Data** - Pulls live data from World Bank's public API
-- **Economic Indicators** - View GDP, population, growth rates, and more
+- **Economic Statistics** - View country name, capital, region, income level, population, and GDP
 - **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
-- **Country Filtering** - Search and filter countries by region or name
 
 ## Tech Stack
 
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
 ![Angular](https://img.shields.io/badge/Angular-DD0031?logo=angular&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&logoColor=white)
 ![RxJS](https://img.shields.io/badge/RxJS-B7178C?logo=reactivex&logoColor=white)
-![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
+[![World Bank API](https://img.shields.io/badge/API-World%20Bank-green)](https://data.worldbank.org/)
 
-- **Frontend Framework**: Angular 12+
+- **Frontend Framework**: Angular 17
 - **Language**: TypeScript
 - **Data Handling**: RxJS for reactive programming
-- **API Integration**: World Bank REST API
 - **Styling**: CSS3, Flexbox
-- **Deployment**: Netlify
+- **API Integration**: World Bank REST API
+- **Deployment**: Netlify (CI/CD)
 
 ## Key Implementation Details
 
@@ -49,13 +48,19 @@ An interactive Angular data visualization application that displays live economi
 - Dependency injection for service consumption
 - Angular Router for navigation
 
+### Potential Improvements
+
+- Add visual feedback with color changes and shadows when cursor is hovering over countries 
+- Improve country information display with icons, better typography, and refined layout
+- Update to an improved SVG world map for enhanced visual appeal
+- Highlight the currently selected countries borders or some other styling to show user selection
+
 ## Author
 
 **Cody Holm**
 
 - GitHub: [@CodyHolm](https://github.com/CodyHolm)
-- LinkedIn: [cody-holm](https://linkedin.com/in/cody-holm-3b6b4b132)
 
 ## Acknowledgments
 
-Data provided by the World Bank API. 
+Data provided by the [World Bank Open Data API](https://data.worldbank.org/).
