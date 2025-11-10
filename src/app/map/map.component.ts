@@ -21,7 +21,7 @@ export class MapComponent {
     const countryCode = target.id;
 
     // Log country code to console for testing
-    // console.log(`Country code: ${countryCode}`);
+    console.log(`Country code: ${countryCode}`);
 
     // Call function to get country information
     if (countryCode) {
