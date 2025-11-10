@@ -1,0 +1,72 @@
+/* Styling for the map component */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5f5;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+/* Left column for the map */
+.map-column {
+    flex: 2;
+    margin-right: 20px;
+    max-width: 80%; 
+}
+
+.map-column h1 {
+    text-align: center;
+    color: #ffffff; 
+    background-color: #333333; 
+    padding: 10px 0; 
+    margin-bottom: 20px; 
+    border-radius: 8px; 
+}
+
+/* Right column for the country information */
+.info-column {
+    flex: 0, 0, 300px;
+    background-color: #ffffff;
+    padding: 20px;
+    margin-top: 100px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  }
+  
+
+  .info-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .info-table td {
+    padding: 10px;
+    border-bottom: 1px solid #dddddd;
+    font-size: 16px;
+    color: #555555;
+  }
+  
+  .info-table td:first-child {
+    font-weight: bold;
+    color: #333333;
+  }
+  
+  .info-table td:last-child {
+    text-align: right;
+    color: #444444;
+  }
+  
+  /* Styling for the footer */
+  footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #333333;
+    color: #ffffff;
+    font-size: 14px;
+  }
