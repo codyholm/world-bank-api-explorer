@@ -6,6 +6,7 @@ body {
     background-color: #f5f5f5f5;
 }
 
+/* Container for the map and info columns */
 .container {
     display: flex;
     justify-content: space-between;
@@ -69,4 +70,38 @@ body {
     background-color: #333333;
     color: #ffffff;
     font-size: 14px;
+  }
+
+  /* Country styles */
+  svg path {
+    fill: #2c2c2c;
+    stroke: #cccccc;
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: all 0.25s ease-in-out;
+  }
+
+  /* Hover effect for countries */
+  svg path:hover {
+    fill: #4a90e2;
+    filter: brightness(1.15) drop-shadow(0 0 8px rgba(74, 144, 226, 0.6));
+    stroke: #2c5aa0;
+    stroke-width: 1;
+    transform: scale(1.02);
+    transform-origin: center;
+  }
+
+  /* Selected country style */
+  svg path.country-selected {
+    fill: #e74c3c;
+    stroke: #c0392b;
+    stroke-width: 2;
+    filter: brightness(1.2) drop-shadow(0 0 12px rgba(231, 76, 60, 0.8));
+  }
+
+  /* Selected state overrides hover */
+  svg path.country-selected:hover {
+    fill: #e74c3c;
+    stroke: #c0392b;
+    filter: brightness(1.25) drop-shadow(0 0 15px rgba(231, 76, 60, 0.9));
   }

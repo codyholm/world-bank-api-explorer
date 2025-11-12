@@ -15,6 +15,9 @@ export class MapComponent {
   // Variable to store country details to display on page
   countryDetails: any = {};
 
+  // Variable to track the currently selected country code
+  selectedCountryCode: string = '';
+
   // Function to handle click event on map
   onMapClick(event:MouseEvent): void {
     const target = event.target as SVGPathElement;
@@ -22,6 +25,20 @@ export class MapComponent {
 
     // Log country code to console for testing
     console.log(`Country code: ${countryCode}`);
+
+    // Remove previous selection styling
+    if (this.selectedCountryCode) {
+      const previousElement = document.getElementById(this.selectedCountryCode);
+      if (previousElement) {
+        previousElement.classList.remove('country-selected');
+      }
+    }
+
+    // Add selection styling to clicked country
+    if (countryCode) {
+      target.classList.add('country-selected');
+      this.selectedCountryCode = countryCode;
+    }
 
     // Call function to get country information
     if (countryCode) {
