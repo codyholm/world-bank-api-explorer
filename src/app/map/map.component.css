@@ -179,18 +179,18 @@ body {
 
   /* Country styles */
   svg path {
-    fill: #2c2c2c;
+    fill: #1a1a1a;
     stroke: #cccccc;
     stroke-width: 0.5;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
   }
 
-  /* Hover effect - Orange (temporary, not assigned) */
+  /* Hover effect - Dark Gray  */
   svg path:hover:not(.color-1):not(.color-2):not(.color-3) {
-    fill: #FF9800;
-    filter: brightness(1.08) drop-shadow(0 0 4px rgba(255, 152, 0, 0.5));
-    stroke: #F57C00;
+    fill: #6b6b6b;
+    filter: brightness(1.08) drop-shadow(0 0 4px rgba(107, 107, 107, 0.5));
+    stroke: #4a4a4a;
     stroke-width: 0.8;
     transform: scale(1.005);
     transform-origin: center;
@@ -239,4 +239,20 @@ body {
   svg path.color-3:hover {
     filter: brightness(1.18) drop-shadow(0 0 8px rgba(156, 39, 176, 0.7));
     transform: scale(1.008);
+  }
+
+  /* Tooltip for country names on hover */
+  .country-tooltip {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #ffffff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    pointer-events: none;
+    z-index: 1000;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.2s ease-in-out;
   }

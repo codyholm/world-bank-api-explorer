@@ -33,6 +33,12 @@ export class MapComponent {
   // Track currently hovered country for color assignment
   hoveredCountryCode: string = '';
 
+  // Variables to track tooltip state and position
+  tooltipVisible: boolean = false;
+  tooltipText: string = '';
+  tooltipX: number = 0;
+  tooltipY: number = 0;
+
   // Check if a country is currently pinned
   isPinned(countryCode: string): boolean {
     return this.pinnedCountries.some(country => country.code === countryCode);
@@ -166,5 +172,43 @@ export class MapComponent {
         color: this.getCountryColor(countryCode)
       };
     });
+  }
+
+  // Function to handle mouse enter on map for tooltip display
+  onCountryMouseEnter(event: MouseEvent): void {
+    const target = event.target as SVGPathElement;
+    if (target.tagName === 'path') {
+      const countryName = target.getAttribute('name');
+      if (countryName) {
+        this.tooltipText = countryName;
+        this.tooltipVisible = true;
+        this.tooltipX = event.clientX + 10;
+        this.tooltipY = event.clientY + 10;
+      }
+    }
+  }
+
+  // Function to handle mouse move on map for tooltip position update
+  onCountryMouseMove(event: MouseEvent): void {
+    const target = event.target as SVGPathElement;
+    if (target.tagName === 'path') {
+      const countryName = target.getAttribute('name');
+      if (countryName) {
+        if (this.tooltipText !== countryName) {
+          this.tooltipText = countryName;
+        }
+        this.tooltipVisible = true;
+        this.tooltipX = event.clientX + 10;
+        this.tooltipY = event.clientY + 10;
+      }
+    } else {
+      this.tooltipVisible = false;
+    }
+  }
+
+  // Function to handle mouse leave on map to hide tooltip
+  onCountryMouseLeave(): void {
+    this.tooltipVisible = false;
+    this.tooltipText = '';
   }
 }
