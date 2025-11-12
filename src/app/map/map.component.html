@@ -518,32 +518,103 @@
       </div>
       <!-- Right column for country information-->
       <div class="info-column">
-            <table class="info-table">
-                  <tr>
-                        <td>Country:</td>
-                        <td>{{ countryDetails.name }}</td>
-                    </tr>
-                    <tr>
-                        <td>Capital:</td>
-                        <td>{{ countryDetails.capitalCity }}</td>
-                    </tr>
-                    <tr>
-                        <td>Region:</td>
-                        <td>{{ countryDetails.region }}</td>
-                    </tr>
-                    <tr>
-                        <td>Income Level:</td>
-                        <td>{{ countryDetails.incomeLevel }}</td>
-                    </tr>
-                    <tr>
-                        <td>Population:</td>
-                        <td>{{ countryDetails.population }}</td>
-                    </tr>
-                    <tr>
-                        <td>GDP:</td>
-                        <td>{{ countryDetails.gdp }}</td>
-                    </tr>
-            </table>
+            <!-- Pinned Country 1 Card -->
+            <div class="country-card" [ngClass]="pinnedCountries[0]?.color" *ngIf="pinnedCountries[0]">
+                  <div class="card-header">
+                        <h3>{{ pinnedCountries[0].data.name }}</h3>
+                        <button class="unpin-button" (click)="unpinCountry(pinnedCountries[0].code)" title="Unpin this country">&times;</button>
+                  </div>
+                  <table class="info-table">
+                        <tr>
+                              <td>Capital:</td>
+                              <td>{{ pinnedCountries[0].data.capitalCity }}</td>
+                        </tr>
+                        <tr>
+                              <td>Region:</td>
+                              <td>{{ pinnedCountries[0].data.region }}</td>
+                        </tr>
+                        <tr>
+                              <td>Income Level:</td>
+                              <td>{{ pinnedCountries[0].data.incomeLevel }}</td>
+                        </tr>
+                        <tr>
+                              <td>Population:</td>
+                              <td>{{ pinnedCountries[0].data.population }}</td>
+                        </tr>
+                        <tr>
+                              <td>GDP:</td>
+                              <td>{{ pinnedCountries[0].data.gdp }}</td>
+                        </tr>
+                  </table>
+            </div>
+
+            <!-- Pinned Country 2 Card -->
+            <div class="country-card" [ngClass]="pinnedCountries[1]?.color" *ngIf="pinnedCountries[1]">
+                  <div class="card-header">
+                        <h3>{{ pinnedCountries[1].data.name }}</h3>
+                        <button class="unpin-button" (click)="unpinCountry(pinnedCountries[1].code)" title="Unpin this country">&times;</button>
+                  </div>
+                  <table class="info-table">
+                        <tr>
+                              <td>Capital:</td>
+                              <td>{{ pinnedCountries[1].data.capitalCity }}</td>
+                        </tr>
+                        <tr>
+                              <td>Region:</td>
+                              <td>{{ pinnedCountries[1].data.region }}</td>
+                        </tr>
+                        <tr>
+                              <td>Income Level:</td>
+                              <td>{{ pinnedCountries[1].data.incomeLevel }}</td>
+                        </tr>
+                        <tr>
+                              <td>Population:</td>
+                              <td>{{ pinnedCountries[1].data.population }}</td>
+                        </tr>
+                        <tr>
+                              <td>GDP:</td>
+                              <td>{{ pinnedCountries[1].data.gdp }}</td>
+                        </tr>
+                  </table>
+            </div>
+
+            <!-- Selected Country Card -->
+            <div class="country-card" [ngClass]="countryDetails.color" *ngIf="countryDetails.name && !isPinned(countryDetails.code)">
+                  <div class="card-header">
+                        <h3>{{ countryDetails.name }}</h3>
+                        <div class="compare-checkbox">
+                              <input 
+                                    type="checkbox" 
+                                    id="compare-checkbox" 
+                                    [disabled]="!canPinMore()"
+                                    (change)="pinCountry(countryDetails.code, countryDetails)"
+                              />
+                              <label for="compare-checkbox">Pin</label>
+                        </div>
+                  </div>
+                  <table class="info-table">
+                        <tr>
+                              <td>Capital:</td>
+                              <td>{{ countryDetails.capitalCity }}</td>
+                        </tr>
+                        <tr>
+                              <td>Region:</td>
+                              <td>{{ countryDetails.region }}</td>
+                        </tr>
+                        <tr>
+                              <td>Income Level:</td>
+                              <td>{{ countryDetails.incomeLevel }}</td>
+                        </tr>
+                        <tr>
+                              <td>Population:</td>
+                              <td>{{ countryDetails.population }}</td>
+                        </tr>
+                        <tr>
+                              <td>GDP:</td>
+                              <td>{{ countryDetails.gdp }}</td>
+                        </tr>
+                  </table>
+            </div>
       </div>
 </div>
 <footer>Created by Cody Holm 2024. Data provided by WorldBank</footer>
