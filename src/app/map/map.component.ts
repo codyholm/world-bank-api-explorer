@@ -160,6 +160,10 @@ export class MapComponent {
       const countryData = data[1][0];
       const populationData = population[1][0];
       const gdpData = gdp[1][0];
+      
+      // Log GDP data for testing and debugging
+      console.log(`${countryData.name} (${countryCode}) - GDP Response:`, gdpData);
+      
       // Add country details to object
       this.countryDetails = {
         code: countryCode,
@@ -167,8 +171,8 @@ export class MapComponent {
         capitalCity: countryData.capitalCity,
         region: countryData.region.value,
         incomeLevel: countryData.incomeLevel.value,
-        population: populationData.value.toLocaleString(),
-        gdp: `$${(gdpData.value / 1_000_000).toLocaleString()}M`,
+        population: this.formatPopulation(populationData),
+        gdp: this.formatGDP(gdpData, countryData.name),
         color: this.getCountryColor(countryCode)
       };
     });
@@ -210,5 +214,47 @@ export class MapComponent {
   onCountryMouseLeave(): void {
     this.tooltipVisible = false;
     this.tooltipText = '';
+  }
+
+  // Function to format population data with null checking
+  // Returns "Data Unavailable" if population data is missing, null, or undefined
+  formatPopulation(populationData: any): string {
+    if (!populationData || populationData.value === null || populationData.value === undefined) {
+      return 'Data Unavailable';
+    }
+    return populationData.value.toLocaleString();
+  }
+
+  // Function to format GDP data with null checking and conditional decimal formatting
+  // Handles missing data and applies different formatting based on GDP magnitude:
+  // - GDP >= $100M: whole number (e.g., $23,315M)
+  // - GDP < $100M: one decimal place (e.g., $45.3M)
+  //
+  // Testing Notes - Countries with missing/unavailable GDP data:
+  // Territories: Greenland, Puerto Rico, Guam, French Guiana, Martinique, Réunion
+  // Dependencies: Bermuda, Cayman Islands, Gibraltar, Falkland Islands
+  // Special Regions: Western Sahara, Gaza Strip, West Bank
+  // Small Islands: Many Caribbean and Pacific island territories
+  // These display "Data Unavailable" instead of $0M
+  formatGDP(gdpData: any, countryName: string): string {
+    // Check if GDP data is missing, null, undefined, or zero
+    if (!gdpData || gdpData.value === null || gdpData.value === undefined || gdpData.value === 0) {
+      console.log(`⚠️ ${countryName} - GDP data unavailable or zero`);
+      return 'Data Unavailable';
+    }
+
+    const gdpInMillions = gdpData.value / 1_000_000;
+    
+    // Log formatted GDP for debugging and testing
+    console.log(`✓ ${countryName} - GDP: $${gdpInMillions.toFixed(1)}M (raw: ${gdpData.value})`);
+    
+    // Conditional formatting based on GDP magnitude
+    if (gdpInMillions >= 100) {
+      // For GDP >= $100M, display as whole number with no decimals
+      return `$${Math.round(gdpInMillions).toLocaleString()}M`;
+    } else {
+      // For GDP < $100M, display with one decimal place
+      return `$${gdpInMillions.toFixed(1)}M`;
+    }
   }
 }
