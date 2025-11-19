@@ -11,10 +11,11 @@ An interactive Angular data visualization application that displays live economi
 
 ## Features
 
-- **Interactive World Map** - Click on any country to view detailed economic data
-- **Real-Time Data** - Pulls live data from World Bank's public API
-- **Economic Statistics** - View country name, capital, region, income level, population, and GDP
-- **Responsive Design** - Works seamlessly on desktop, tablet, and mobile
+- **Interactive SVG World Map** - 195 clickable countries with hover effects and real-time data display
+- **3-Country Comparison System** - Color-coded pinning allows side-by-side analysis of GDP, population, and economic indicators
+- **Real-Time World Bank API Integration** - Live data fetching using RxJS Observables for async stream management
+- **Smart Data Formatting** - Conditional decimal handling (GDP >100M displays without decimals for readability)
+- **Production Deployment** - Automated CI/CD pipeline via Netlify with GitHub integration
 
 ## Tech Stack
 
