@@ -22,10 +22,10 @@ export class MapComponent {
   pinnedCountries: Array<any> = [];
 
   // Maximum number of countries that can be pinned
-  maxPinnedCountries = 2;
+  maxPinnedCountries = 6;
 
   // Available colors for countries (in order of assignment)
-  availableColors = ['color-1', 'color-2', 'color-3']; // blue, green, purple
+  availableColors = ['color-1', 'color-2', 'color-3', 'color-4', 'color-5', 'color-6'];
   
   // Map to track which color is assigned to which country
   countryColorMap: Map<string, string> = new Map();
@@ -99,6 +99,7 @@ export class MapComponent {
     const index = this.pinnedCountries.findIndex(country => country.code === countryCode);
     if (index !== -1) {
       this.pinnedCountries.splice(index, 1);
+
       // Remove the color class from map and color map
       const element = document.getElementById(countryCode);
       const color = this.countryColorMap.get(countryCode);
@@ -132,7 +133,25 @@ export class MapComponent {
       return;
     }
 
-    // If clicking a different country than selected, remove previous selection
+    // If clicking a pinned country, just show its details (don't change selection)
+    if (this.isPinned(countryCode)) {
+      // Don't change selectedCountryCode or colors, just fetch and display data
+      forkJoin({
+        data: this.countryInfoService.getCountryInfo(countryCode),
+        population: this.countryInfoService.getCountryPopulation(countryCode),
+        gdp: this.countryInfoService.getCountryGDP(countryCode)
+      }).subscribe(({data, population, gdp }) => {
+        const countryData = data[1][0];
+        const populationData = population[1][0];
+        const gdpData = gdp[1][0];
+        
+        // Log GDP data for testing and debugging
+        console.log(`${countryData.name} (${countryCode}) - GDP Response:`, gdpData);
+      });
+      return;
+    }
+
+    // Clear previously selected country if it's different and not pinned
     if (this.selectedCountryCode && 
         this.selectedCountryCode !== countryCode && 
         !this.isPinned(this.selectedCountryCode)) {
@@ -144,12 +163,10 @@ export class MapComponent {
       }
     }
 
-    // Select the clicked country (assign color if needed)
-    if (!this.isPinned(countryCode)) {
-      const color = this.assignColorToCountry(countryCode);
-      target.classList.add(color);
-      this.selectedCountryCode = countryCode;
-    }
+    // Select the clicked country (assign color and update selection)
+    const color = this.assignColorToCountry(countryCode);
+    target.classList.add(color);
+    this.selectedCountryCode = countryCode;
 
     // Call function to get country information
     forkJoin({
@@ -176,10 +193,10 @@ export class MapComponent {
         color: this.getCountryColor(countryCode)
       };
     });
-  }
+  } 
 
-  // Function to handle mouse enter on map for tooltip display
-  onCountryMouseEnter(event: MouseEvent): void {
+    // Function to handle mouse enter on map for tooltip display
+    onCountryMouseEnter(event: MouseEvent): void {
     const target = event.target as SVGPathElement;
     if (target.tagName === 'path') {
       const countryName = target.getAttribute('name');
