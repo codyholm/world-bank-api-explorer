@@ -30,8 +30,6 @@ body {
   border: 1px solid #334155;
 }
 
-
-
 /* Add margin to SVG to prevent overlap with banner */
 .map-column svg {
     margin-top: 10px;
@@ -59,54 +57,19 @@ body {
     border-left: 4px solid #22d3ee; 
 }
 
-  /* Color 1 - Blue */
-  .country-card.color-1 {
-    border-left-color: #2196F3;
-  }
-  .country-card.color-1 h3 {
-    color: #1976D2;
-  }
-
-  /* Color 2 - Green */
-  .country-card.color-2 {
-    border-left-color: #4CAF50;
-  }
-  .country-card.color-2 h3 {
-    color: #388E3C;
-  }
-
-  /* Color 3 - Purple */
-  .country-card.color-3 {
-    border-left-color: #9C27B0;
-  }
-  .country-card.color-3 h3 {
-    color: #7B1FA2;
-  }
-
-    /* Color 4 - Orange */
-  .country-card.color-4 {
-    border-left-color: #f59e0b;
-  }
-  .country-card.color-4 h3 {
-    color: #d97706;
-  }
-
-  /* Color 5 - Pink */
-  .country-card.color-5 {
-    border-left-color: #ec4899;
-  }
-  .country-card.color-5 h3 {
-    color: #db2777;
-  }
-
-  /* Color 6 - Cyan */
-  .country-card.color-6 {
-    border-left-color: #06b6d4;
-  }
-  .country-card.color-6 h3 {
-    color: #0891b2;
-  }
-
+  /* Card color variations */
+  .country-card.color-1{border-left-color:#2196F3;}
+  .country-card.color-1 h3{color:#1976D2;}
+  .country-card.color-2{border-left-color:#4CAF50;}
+  .country-card.color-2 h3{color:#388E3C;}
+  .country-card.color-3{border-left-color:#9C27B0;}
+  .country-card.color-3 h3{color:#7B1FA2;}
+  .country-card.color-4{border-left-color:#f59e0b;}
+  .country-card.color-4 h3{color:#d97706;}
+  .country-card.color-5{border-left-color:#ec4899;}
+  .country-card.color-5 h3{color:#db2777;}
+  .country-card.color-6{border-left-color:#06b6d4;}
+  .country-card.color-6 h3{color:#0891b2;}
 
   /* Card header */
   .card-header {
@@ -224,96 +187,23 @@ svg path {
     transform-origin: center;
   }
 
-   /* Color 1 - Blue */
-  svg path.color-1 {
-    fill: #2196F3;
-    stroke: #1976D2;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(33, 150, 243, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
+  /* Base styles for colored countries */
+  svg path[class*="color-"]{stroke-width:1.5;filter:brightness(1.15);transform:scale(1.005);transform-origin:center;}
+  svg path[class*="color-"]:hover{filter:brightness(1.18);transform:scale(1.008);}
 
-  svg path.color-1:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(33, 150, 243, 0.7));
-    transform: scale(1.008);
-  }
-
-  /* Color 2 - Green */
-  svg path.color-2 {
-    fill: #4CAF50;
-    stroke: #388E3C;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(76, 175, 80, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
-
-  svg path.color-2:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(76, 175, 80, 0.7));
-    transform: scale(1.008);
-  }
-
-  /* Color 3 - Purple */
-  svg path.color-3 {
-    fill: #9C27B0;
-    stroke: #7B1FA2;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(156, 39, 176, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
-
-  svg path.color-3:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(156, 39, 176, 0.7));
-    transform: scale(1.008);
-  }
-
-  /* Color 4 - Orange */
-  svg path.color-4 {
-    fill: #f59e0b;
-    stroke: #d97706;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(245, 158, 11, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
-
-  svg path.color-4:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(245, 158, 11, 0.7));
-    transform: scale(1.008);
-  }
-
-  /* Color 5 - Pink */
-  svg path.color-5 {
-    fill: #ec4899;
-    stroke: #db2777;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(236, 72, 153, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
-
-  svg path.color-5:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(236, 72, 153, 0.7));
-    transform: scale(1.008);
-  }
-
-  /* Color 6 - Cyan */
-  svg path.color-6 {
-    fill: #06b6d4;
-    stroke: #0891b2;
-    stroke-width: 1.5;
-    filter: brightness(1.15) drop-shadow(0 0 6px rgba(6, 182, 212, 0.6));
-    transform: scale(1.005);
-    transform-origin: center;
-  }
-
-  svg path.color-6:hover {
-    filter: brightness(1.18) drop-shadow(0 0 8px rgba(6, 182, 212, 0.7));
-    transform: scale(1.008);
-  }
-
+  /* Individual color fills and strokes */
+  svg path.color-1{fill:#2196F3;stroke:#1976D2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(33,150,243,.6));}
+  svg path.color-1:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(33,150,243,.7));}
+  svg path.color-2{fill:#4CAF50;stroke:#388E3C;filter:brightness(1.15) drop-shadow(0 0 6px rgba(76,175,80,.6));}
+  svg path.color-2:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(76,175,80,.7));}
+  svg path.color-3{fill:#9C27B0;stroke:#7B1FA2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(156,39,176,.6));}
+  svg path.color-3:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(156,39,176,.7));}
+  svg path.color-4{fill:#f59e0b;stroke:#d97706;filter:brightness(1.15) drop-shadow(0 0 6px rgba(245,158,11,.6));}
+  svg path.color-4:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(245,158,11,.7));}
+  svg path.color-5{fill:#ec4899;stroke:#db2777;filter:brightness(1.15) drop-shadow(0 0 6px rgba(236,72,153,.6));}
+  svg path.color-5:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(236,72,153,.7));}
+  svg path.color-6{fill:#06b6d4;stroke:#0891b2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(6,182,212,.6));}
+  svg path.color-6:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(6,182,212,.7));}
 
   /* Tooltip for country names on hover */
   .country-tooltip {
