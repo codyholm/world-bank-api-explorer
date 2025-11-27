@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { CountryInfoService } from '../country-info.service';
 import { forkJoin } from 'rxjs';
 
@@ -7,10 +9,25 @@ import { forkJoin } from 'rxjs';
   templateUrl: './map.component.html',
   styleUrl: './map.component.css'
 })
-export class MapComponent {
+export class MapComponent implements OnInit {
 
-  // Inject CountryInfoService into component
-  constructor(private countryInfoService: CountryInfoService) { }
+  // SVG content loaded from external file
+  svgContent: SafeHtml = '';
+
+  // Inject services into component
+  constructor(
+    private countryInfoService: CountryInfoService,
+    private http: HttpClient,
+    private sanitizer: DomSanitizer
+  ) { }
+
+  // Load SVG content on component initialization
+  ngOnInit(): void {
+    this.http.get('assets/world-map.svg', { responseType: 'text' })
+      .subscribe(svg => {
+        this.svgContent = this.sanitizer.bypassSecurityTrustHtml(svg);
+      });
+  }
 
   // Variable to store country details to display on page
   countryDetails: any = {};

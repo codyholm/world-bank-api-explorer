@@ -30,6 +30,11 @@ body {
   border: 1px solid #334155;
 }
 
+/* Container for dynamically loaded SVG */
+.svg-container {
+    width: 100%;
+}
+
 /* Add margin to SVG to prevent overlap with banner */
 .map-column svg {
     margin-top: 10px;
@@ -168,17 +173,17 @@ body {
     font-size: 14px;
   }
 
-  /* Country styles */
-svg path {
-    fill: #1e293b; 
-    stroke: #334155; 
+  /* Country styles - ::ng-deep needed for dynamically injected SVG */
+  ::ng-deep svg path {
+    fill: #1e293b;
+    stroke: #334155;
     stroke-width: 0.5;
     cursor: pointer;
     transition: all 0.25s ease-in-out;
-}
+  }
 
   /* Hover effect */
-  svg path:hover:not(.color-1):not(.color-2):not(.color-3):not(.color-4):not(.color-5):not(.color-6) {
+  ::ng-deep svg path:hover:not(.color-1):not(.color-2):not(.color-3):not(.color-4):not(.color-5):not(.color-6) {
     fill: #22d3ee;
     filter: brightness(1.08) drop-shadow(0 0 4px rgba(34, 211, 238, 0.5));
     stroke: #06b6d4;
@@ -188,24 +193,22 @@ svg path {
   }
 
   /* Base styles for colored countries */
-  svg path[class*="color-"]{stroke-width:1.5;filter:brightness(1.15);transform:scale(1.005);transform-origin:center;}
-  svg path[class*="color-"]:hover{filter:brightness(1.18);transform:scale(1.008);}
+  ::ng-deep svg path[class*="color-"]{stroke-width:1.5;filter:brightness(1.15);transform:scale(1.005);transform-origin:center;}
+  ::ng-deep svg path[class*="color-"]:hover{filter:brightness(1.18);transform:scale(1.008);}
 
   /* Individual color fills and strokes */
-  svg path.color-1{fill:#2196F3;stroke:#1976D2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(33,150,243,.6));}
-  svg path.color-1:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(33,150,243,.7));}
-  svg path.color-2{fill:#4CAF50;stroke:#388E3C;filter:brightness(1.15) drop-shadow(0 0 6px rgba(76,175,80,.6));}
-  svg path.color-2:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(76,175,80,.7));}
-  svg path.color-3{fill:#9C27B0;stroke:#7B1FA2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(156,39,176,.6));}
-  svg path.color-3:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(156,39,176,.7));}
-  svg path.color-4{fill:#f59e0b;stroke:#d97706;filter:brightness(1.15) drop-shadow(0 0 6px rgba(245,158,11,.6));}
-  svg path.color-4:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(245,158,11,.7));}
-  svg path.color-5{fill:#ec4899;stroke:#db2777;filter:brightness(1.15) drop-shadow(0 0 6px rgba(236,72,153,.6));}
-  svg path.color-5:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(236,72,153,.7));}
-  svg path.color-6{fill:#06b6d4;stroke:#0891b2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(6,182,212,.6));}
-  svg path.color-6:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(6,182,212,.7));}
-
-  /* Tooltip for country names on hover */
+  ::ng-deep svg path.color-1{fill:#2196F3;stroke:#1976D2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(33,150,243,.6));}
+  ::ng-deep svg path.color-1:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(33,150,243,.7));}
+  ::ng-deep svg path.color-2{fill:#4CAF50;stroke:#388E3C;filter:brightness(1.15) drop-shadow(0 0 6px rgba(76,175,80,.6));}
+  ::ng-deep svg path.color-2:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(76,175,80,.7));}
+  ::ng-deep svg path.color-3{fill:#9C27B0;stroke:#7B1FA2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(156,39,176,.6));}
+  ::ng-deep svg path.color-3:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(156,39,176,.7));}
+  ::ng-deep svg path.color-4{fill:#f59e0b;stroke:#d97706;filter:brightness(1.15) drop-shadow(0 0 6px rgba(245,158,11,.6));}
+  ::ng-deep svg path.color-4:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(245,158,11,.7));}
+  ::ng-deep svg path.color-5{fill:#ec4899;stroke:#db2777;filter:brightness(1.15) drop-shadow(0 0 6px rgba(236,72,153,.6));}
+  ::ng-deep svg path.color-5:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(236,72,153,.7));}
+  ::ng-deep svg path.color-6{fill:#06b6d4;stroke:#0891b2;filter:brightness(1.15) drop-shadow(0 0 6px rgba(6,182,212,.6));}
+  ::ng-deep svg path.color-6:hover{filter:brightness(1.18) drop-shadow(0 0 8px rgba(6,182,212,.7));}  /* Tooltip for country names on hover */
   .country-tooltip {
     position: fixed;
     background-color: rgba(0, 0, 0, 0.85);
